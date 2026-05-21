@@ -1,8 +1,8 @@
 export const resumeData = {
   intro: {
-    name: "Your Name",
-    title: "Full Stack Developer",
-    tagline: "Building things that matter",
+    name: "Kritika Singh",
+    title: "Web Developer(Full Stack)",
+    tagline: "Crafting solutions with bigger perspective",
   },
   skills: [
     { name: "React",   level: 90, color: "#61DAFB" },
