@@ -6,10 +6,16 @@ import { resumeData } from '../../data/resumeData';
 
 function SkillBadge({ skill, index, total }) {
   const ref = useRef();
-  const { collectBadge, collectedBadges, setActiveCard, startQuiz } = useGameStore();
-  const angle = (index / total) * Math.PI * 2;
-  const x = Math.cos(angle) * 2.5;
-  const z = Math.sin(angle) * 2.5;
+
+  // Read each piece separately with a fallback so undefined never reaches .includes()
+  const collectedBadges = useGameStore(s => s.collectedBadges ?? []);
+  const setActiveCard   = useGameStore(s => s.setActiveCard);
+  const clearZone       = useGameStore(s => s.clearZone);
+  const currentZone     = useGameStore(s => s.currentZone);
+
+  const angle     = (index / total) * Math.PI * 2;
+  const x         = Math.cos(angle) * 2.5;
+  const z         = Math.sin(angle) * 2.5;
   const collected = collectedBadges.includes(skill.name);
 
   useFrame((_, delta) => {
@@ -20,17 +26,24 @@ function SkillBadge({ skill, index, total }) {
   });
 
   const handleClick = () => {
-    collectBadge(skill.name, 50);
+    // Add to collected locally via store
+    const { collectedBadges: current, addScore } = useGameStore.getState();
+    if (!current.includes(skill.name)) {
+      useGameStore.setState({ collectedBadges: [...current, skill.name] });
+      addScore(50);
+    }
+
     setActiveCard({
-      title: skill.name,
+      title:   skill.name,
       subtitle: `Proficiency: ${skill.level}%`,
-      content: `+50 points collected! Keep exploring to find the quiz challenge.`,
-      tags: [skill.name],
+      content: collected ? 'Already collected!' : '+50 points! Keep collecting badges.',
+      tags:    [skill.name],
     });
-    // Trigger quiz after collecting 3rd badge
-    const { collectedBadges: current } = useGameStore.getState();
-    if (current.length === 2) {
-      setTimeout(() => startQuiz(resumeData.quizzes.skills), 800);
+
+    // Auto-clear zone once all badges collected
+    const updated = useGameStore.getState().collectedBadges;
+    if (updated.length >= total) {
+      setTimeout(() => clearZone(currentZone, 300), 600);
     }
   };
 
@@ -41,7 +54,7 @@ function SkillBadge({ skill, index, total }) {
         args={[0.8, 0.8, 0.8]}
         onClick={handleClick}
         onPointerOver={() => document.body.style.cursor = 'pointer'}
-        onPointerOut={() => document.body.style.cursor = 'default'}
+        onPointerOut={()  => document.body.style.cursor = 'default'}
       >
         <meshStandardMaterial
           color={collected ? '#FFD700' : skill.color}
@@ -67,10 +80,15 @@ export default function SkillsRoom({ position }) {
         ⚡ SKILLS
       </Text>
       <Text position={[0, -0.2, 0]} fontSize={0.18} color="#888" anchorX="center">
-        Click badges to collect • Collect 3 to unlock quiz!
+        Click all badges to unlock next zone!
       </Text>
       {resumeData.skills.map((skill, i) => (
-        <SkillBadge key={skill.name} skill={skill} index={i} total={resumeData.skills.length} />
+        <SkillBadge
+          key={skill.name}
+          skill={skill}
+          index={i}
+          total={resumeData.skills.length}
+        />
       ))}
     </group>
   );

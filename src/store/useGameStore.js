@@ -1,61 +1,82 @@
 import { create } from 'zustand';
 
-const ZONES = ['intro', 'skills', 'projects', 'education', 'achievements', 'contact'];
+export const ZONES = ['intro', 'skills', 'projects', 'education', 'achievements', 'contact'];
 
 export const useGameStore = create((set, get) => ({
   gameStarted: false,
   currentZone: 'intro',
   visitedZones: [],
-  collectedBadges: [],
+  unlockedZones: ['intro'],   // only intro unlocked at start
+  clearedZones: [],           // zones where game was won
   activeCard: null,
   showFinal: false,
   score: 0,
   cameraTarget: [0, 0, 0],
-  quizActive: false,
-  quizQuestion: null,
-  quizAnswered: [],
+  cameraZoomed: false,        // true = zoomed into zone
+  activeGame: null,
+  collectedBadges: [],            // which game is showing
 
-  startGame: () => set({ gameStarted: true }),
+  startGame: () => set({ gameStarted: true, activeGame: 'quiz_intro' }),
 
   goToZone: (zone) => {
-    const { visitedZones } = get();
-    const isNew = !visitedZones.includes(zone);
+    const { unlockedZones, visitedZones } = get();
+  if (!unlockedZones.includes(zone)) return;
+
+  const zoneIndex = ZONES.indexOf(zone);
+  const isNew = !visitedZones.includes(zone);
+
+  set({
+    currentZone: zone,
+    cameraTarget: [zoneIndex * 14, 0, 0],
+    cameraZoomed: false,
+    visitedZones: isNew ? [...visitedZones, zone] : visitedZones,
+    activeGame: null,   // ← never auto-open game on zone entry
+  });
+  },
+
+  zoomIntoZone: () => set({ cameraZoomed: true }),
+  zoomOut: () => set({ cameraZoomed: false }),
+
+  clearZone: (zone, points) => {
+    const { clearedZones, unlockedZones, score } = get();
+    if (clearedZones.includes(zone)) return;
+
     const zoneIndex = ZONES.indexOf(zone);
+    const nextZone = ZONES[zoneIndex + 1];
+    const newCleared = [...clearedZones, zone];
+    const newUnlocked = nextZone
+      ? [...new Set([...unlockedZones, nextZone])]
+      : unlockedZones;
+
+    const allDone = newCleared.length === ZONES.length;
+
     set({
-      currentZone: zone,
-      visitedZones: isNew ? [...visitedZones, zone] : visitedZones,
-      cameraTarget: [zoneIndex * 12, 0, 0],
-    });
-    const newVisited = isNew ? [...visitedZones, zone] : visitedZones;
-    if (newVisited.length === ZONES.length) {
-      setTimeout(() => set({ showFinal: true }), 1500);
-    }
-  },
-
-  collectBadge: (badge, points = 50) => {
-    const { collectedBadges, score } = get();
-    if (!collectedBadges.includes(badge)) {
-      set({ collectedBadges: [...collectedBadges, badge], score: score + points });
-    }
-  },
-
-  addScore: (points) => set(s => ({ score: s.score + points })),
-
-  setActiveCard: (card) => set({ activeCard: card }),
-  closeCard: () => set({ activeCard: null }),
-
-  startQuiz: (question) => set({ quizActive: true, quizQuestion: question }),
-  answerQuiz: (correct, questionId) => {
-    const { quizAnswered, score } = get();
-    if (quizAnswered.includes(questionId)) return;
-    set({
-      quizAnswered: [...quizAnswered, questionId],
-      score: correct ? score + 150 : score,
-      quizActive: false,
-      quizQuestion: null,
+      clearedZones: newCleared,
+      unlockedZones: newUnlocked,
+      score: score + points,
+      activeGame: null,
+      activeCard: allDone ? null : null,
+      showFinal: allDone,
     });
   },
-  closeQuiz: () => set({ quizActive: false, quizQuestion: null }),
 
-  closeFinal: () => set({ showFinal: false }),
+  openInfoCard: (card) => set({ activeCard: card, cameraZoomed: true }),
+  closeCard: () => set({ activeCard: null, cameraZoomed: false }),
+  setActiveGame: (game) => set({ activeGame: game }),
+  closeGame: () => set({ activeGame: null }),
+  addScore: (pts) => set(s => ({ score: s.score + pts })),
+  closeFinal: () => set({
+    gameStarted: false,
+    currentZone: 'intro',
+    visitedZones: [],
+    unlockedZones: ['intro'],
+    clearedZones: [],
+    activeCard: null,
+    showFinal: false,
+    score: 0,
+    cameraTarget: [0, 0, 0],
+    cameraZoomed: false,
+    activeGame: null,
+    collectedBadges: [],  
+  }),
 }));
