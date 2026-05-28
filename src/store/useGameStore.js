@@ -6,17 +6,17 @@ export const useGameStore = create((set, get) => ({
   gameStarted: false,
   currentZone: 'intro',
   visitedZones: [],
-  unlockedZones: ['intro'],   // only intro unlocked at start
-  clearedZones: [],           // zones where game was won
+  unlockedZones: ['intro'],   
+  clearedZones: [],           
   activeCard: null,
   showFinal: false,
   score: 0,
   cameraTarget: [0, 0, 0],
-  cameraZoomed: false,        // true = zoomed into zone
+  cameraZoomed: false,        
   activeGame: null,
-  collectedBadges: [],            // which game is showing
+  collectedBadges: [],            
 
-  startGame: () => set({ gameStarted: true, activeGame: 'quiz_intro' }),
+  startGame: () => set({ gameStarted: true, activeGame: null }),
 
   goToZone: (zone) => {
     const { unlockedZones, visitedZones } = get();
@@ -30,7 +30,7 @@ export const useGameStore = create((set, get) => ({
     cameraTarget: [zoneIndex * 14, 0, 0],
     cameraZoomed: false,
     visitedZones: isNew ? [...visitedZones, zone] : visitedZones,
-    activeGame: null,   // ← never auto-open game on zone entry
+    activeGame: null,   //never auto opens game on zone entry
   });
   },
 
@@ -64,6 +64,7 @@ export const useGameStore = create((set, get) => ({
   closeCard: () => set({ activeCard: null, cameraZoomed: false }),
   setActiveGame: (game) => set({ activeGame: game }),
   closeGame: () => set({ activeGame: null }),
+  setActiveCard: (card) => set({ activeCard: card }),
   addScore: (pts) => set(s => ({ score: s.score + pts })),
   closeFinal: () => set({
     gameStarted: false,

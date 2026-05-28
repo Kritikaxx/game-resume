@@ -1,88 +1,84 @@
 export const resumeData = {
   intro: {
     name: "Kritika Singh",
-    title: "Web Developer(Full Stack)",
-    tagline: "Crafting solutions with bigger perspective",
-  },
-  skills: [
-    { name: "React",   level: 90, color: "#61DAFB" },
-    { name: "Node.js", level: 80, color: "#68A063" },
-    { name: "Three.js",level: 70, color: "#FF6B6B" },
-    { name: "Python",  level: 75, color: "#FFD700" },
-    { name: "MongoDB", level: 65, color: "#4DB33D" },
-  ],
-  projects: [
-    {
-      name: "Project Alpha",
-      description: "A web app that does amazing things",
-      tech: ["React", "Node.js", "MongoDB"],
-      link: "https://github.com/yourname/project-alpha",
-    },
-    {
-      name: "Project Beta",
-      description: "An AI-powered tool",
-      tech: ["Python", "FastAPI"],
-      link: "https://github.com/yourname/project-beta",
-    },
-    {
-      name: "Project Gamma",
-      description: "Mobile-first e-commerce platform",
-      tech: ["React Native", "Firebase"],
-      link: "https://github.com/yourname/project-gamma",
-    },
-  ],
-  education: [
-    { degree: "B.Tech Computer Science", school: "Your University", year: "2022–2026", grade: "8.5 CGPA" },
-    { degree: "Class 12 (PCM)",          school: "Your School",     year: "2022",      grade: "92%" },
-  ],
-  achievements: [
-    { title: "Hackathon Winner",       org: "TechFest 2024", icon: "🏆" },
-    { title: "AWS Cloud Practitioner", org: "Amazon",        icon: "☁️" },
-    { title: "React Developer Cert",   org: "Meta",          icon: "📜" },
-  ],
-  contact: {
-    email: "you@email.com",
-    github: "https://github.com/yourname",
-    linkedin: "https://linkedin.com/in/yourname",
-    phone: "+91-XXXXXXXXXX",
+    title: "Software Development Engineer",
+    tagline: "Crafting solutions with purpose & perspective • ML enthusiast • Currently @Deloitte",
   },
 
-  // ── Quiz questions per zone (used for scoring game) ──────────────────────
+  skills: [
+    { name: "React",       level: 90, color: "#61DAFB" },
+    { name: "Java & JavaScript",      level: 85, color: "#FFD700" },
+    { name: "C++",        level: 80, color: "#FF6B35" },
+    { name: "TypeScript",  level: 78, color: "#3178C6" },
+    { name: "Python & SQL",         level: 75, color: "#00599C" },
+  ],
+
+  projects: [
+    {
+      name: "UniDoc",
+      description: "Serverless document management platform using React, TypeScript & Firebase with rich text editing, secure auth and dual format export (PDF/DOCX).",
+      tech: ["React", "TypeScript", "Firebase"],
+      link: "https://github.com/Kritikaxx/MajorProject",
+    },
+    {
+      name: "Vision Assistant",
+      description: "Deep learning object detection system using YOLOv8 with Multi-Objective Optimization, OpenCV integration for real-time assistive vision.",
+      tech: ["Python", "YOLOv8", "OpenCV"],
+      link: "https://github.com/anushree0218/Detection",
+    },
+    {
+      name: "Weather Dashboard",
+      description: "Real-time weather app with city search, dynamic UI, theme toggling, animated loading states and auto location detection via OpenWeatherMap API.",
+      tech: ["React", "OpenWeatherMap API"],
+      link: "https://github.com/Kritikaxx/Weather-app",
+    },
+  ],
+
+  education: [
+    {
+      degree: "B.Tech — Information Technology",
+      school: "KIIT, Bhubaneswar",
+      year: "2022 – 2026",
+      grade: "CGPA: 8.76",
+    },
+    {
+      degree: "Class 12 (PCM)",
+      school: "Loyola School, Jamshedpur",
+      year: "2020 – 2022",
+      grade: "75.5%",
+    },
+    {
+      degree: "Class 10",
+      school: "Loyola School, Jamshedpur",
+      year: "2020",
+      grade: "92.2%",
+    },
+  ],
+
+  achievements: [
+    { title: "Enactus India Nationals",  org: "1st Place — Project Vistaar 2024",       icon: "🥇" },
+    { title: "Flipkart GRID 7.0",        org: "National Semi-Finalist",                  icon: "🏆" },
+    { title: "HULT Prize 2024",          org: "3rd Place — Project Encube",              icon: "🥉" },
+  ],
+
+  contact: {
+    email:    "kritika2311singh@gmail.com",
+    github:   "https://github.com/Kritikaxx",
+    linkedin: "https://www.linkedin.com/in/kritikasingh23",
+    phone:    "+91-8092664001",
+  },
+
   quizzes: {
     intro: {
       id: "q_intro",
-      question: "What is my primary role?",
-      options: ["UI Designer", "Full Stack Developer", "Data Scientist", "DevOps Engineer"],
+      question: "Which planet is known as the Red Planet?",
+      options: ["Venus", "Mars", "Jupiter", "Saturn"],
       correct: 1,
-    },
-    skills: {
-      id: "q_skills",
-      question: "Which frontend library do I use most?",
-      options: ["Vue.js", "Angular", "React", "Svelte"],
-      correct: 2,
-    },
-    projects: {
-      id: "q_projects",
-      question: "Which database did I use in Project Alpha?",
-      options: ["PostgreSQL", "MongoDB", "Firebase", "SQLite"],
-      correct: 1,
-    },
-    education: {
-      id: "q_education",
-      question: "What is my current CGPA?",
-      options: ["7.5", "9.0", "8.5", "8.0"],
-      correct: 2,
-    },
-    achievements: {
-      id: "q_achievements",
-      question: "Which cloud certification do I hold?",
-      options: ["Google Cloud", "Azure", "AWS", "IBM Cloud"],
-      correct: 2,
     },
     contact: {
       id: "q_contact",
-      question: "Where can you find my open source work?",
-      options: ["Dribbble", "Behance", "GitHub", "GitLab"],
+      question: "What galaxy do we live in?",
+      options: ["Andromeda", "Triangulum", "Milky Way", "Whirlpool"],
       correct: 2,
     },
   },

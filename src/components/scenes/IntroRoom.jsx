@@ -46,7 +46,6 @@ export default function IntroRoom({ position }) {
         {resumeData.intro.title}
       </Text>
       <Text position={[0, -0.3, 0]} fontSize={0.2} color="#888" anchorX="center">
-        Click the orb to learn more
       </Text>
     </group>
   );

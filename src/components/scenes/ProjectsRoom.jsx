@@ -37,7 +37,6 @@ export default function ProjectsRoom({ position }) {
         );
       })}
       <Text position={[0, -0.3, 0]} fontSize={0.2} color="#888" anchorX="center">
-        Click panels to view projects
       </Text>
     </group>
   );

@@ -7,16 +7,14 @@ import { resumeData } from '../../data/resumeData';
 function SkillBadge({ skill, index, total }) {
   const ref = useRef();
 
-  // Read each piece separately with a fallback so undefined never reaches .includes()
   const collectedBadges = useGameStore(s => s.collectedBadges ?? []);
   const setActiveCard   = useGameStore(s => s.setActiveCard);
-  const clearZone       = useGameStore(s => s.clearZone);
-  const currentZone     = useGameStore(s => s.currentZone);
+  const addScore        = useGameStore(s => s.addScore);
+  const collected       = collectedBadges.includes(skill.name);
 
-  const angle     = (index / total) * Math.PI * 2;
-  const x         = Math.cos(angle) * 2.5;
-  const z         = Math.sin(angle) * 2.5;
-  const collected = collectedBadges.includes(skill.name);
+  const angle = (index / total) * Math.PI * 2;
+  const x     = Math.cos(angle) * 2.5;
+  const z     = Math.sin(angle) * 2.5;
 
   useFrame((_, delta) => {
     if (ref.current) {
@@ -25,26 +23,19 @@ function SkillBadge({ skill, index, total }) {
     }
   });
 
-  const handleClick = () => {
-    // Add to collected locally via store
-    const { collectedBadges: current, addScore } = useGameStore.getState();
+  const handleClick = (e) => {
+    e.stopPropagation();
+    const current = useGameStore.getState().collectedBadges ?? [];
     if (!current.includes(skill.name)) {
       useGameStore.setState({ collectedBadges: [...current, skill.name] });
       addScore(50);
     }
-
     setActiveCard({
-      title:   skill.name,
+      title:    skill.name,
       subtitle: `Proficiency: ${skill.level}%`,
-      content: collected ? 'Already collected!' : '+50 points! Keep collecting badges.',
-      tags:    [skill.name],
+      content:  collected ? 'Already collected!' : '+50 points collected!',
+      tags:     [skill.name],
     });
-
-    // Auto-clear zone once all badges collected
-    const updated = useGameStore.getState().collectedBadges;
-    if (updated.length >= total) {
-      setTimeout(() => clearZone(currentZone, 300), 600);
-    }
   };
 
   return (
@@ -80,7 +71,6 @@ export default function SkillsRoom({ position }) {
         ⚡ SKILLS
       </Text>
       <Text position={[0, -0.2, 0]} fontSize={0.18} color="#888" anchorX="center">
-        Click all badges to unlock next zone!
       </Text>
       {resumeData.skills.map((skill, i) => (
         <SkillBadge

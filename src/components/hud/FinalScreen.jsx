@@ -9,6 +9,18 @@ export default function FinalScreen() {
   const grade = score >= 1400 ? 'S' : score >= 1000 ? 'A' : score >= 600 ? 'B' : 'C';
   const gradeColor = { S:'text-yellow-400', A:'text-cyan-400', B:'text-green-400', C:'text-gray-400' };
 
+  // ← CHANGED: opens Gmail compose with email, subject and body pre-filled
+  const handleContact = () => {
+    const subject = encodeURIComponent("Hey Kritika, I explored your Resume Quest!");
+    const body    = encodeURIComponent(
+      `Hi Kritika,\n\nI just explored your interactive 3D resume and scored ${score} points.\n\nI'd love to connect.\n\nBest regards,`
+    );
+    window.open(
+      `https://mail.google.com/mail/?view=cm&to=kritika2311singh@gmail.com&su=${subject}&body=${body}`,
+      '_blank'
+    );
+  };
+
   return (
     <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/95 text-white overflow-y-auto">
       <div className="text-center max-w-lg w-full mx-4 py-8">
@@ -32,16 +44,26 @@ export default function FinalScreen() {
         </div>
 
         <div className="flex gap-3 justify-center flex-wrap">
-          <a href={`mailto:${resumeData.contact.email}`}
-            className="px-6 py-3 bg-cyan-500 text-black font-bold rounded-full hover:bg-cyan-400">
+          {/* ← CHANGED: opens Gmail compose with email, subject and body pre-filled */}
+          <button
+            onClick={handleContact}
+            className="px-6 py-3 bg-cyan-500 text-black font-bold rounded-full hover:bg-cyan-400 transition-all"
+          >
             📬 Contact {resumeData.intro.name}
-          </a>
+          </button>
+
           <a href={resumeData.contact.github} target="_blank" rel="noreferrer"
-            className="px-6 py-3 bg-gray-700 text-white font-bold rounded-full hover:bg-gray-600">
-            🐙 GitHub
+            className="px-6 py-3 bg-gray-700 text-white font-bold rounded-full hover:bg-gray-600 transition-all">
+            GitHub
           </a>
+
+          <a href={resumeData.contact.linkedin} target="_blank" rel="noreferrer"
+            className="px-6 py-3 bg-blue-700 text-white font-bold rounded-full hover:bg-blue-600 transition-all">
+            LinkedIn
+          </a>
+
           <button onClick={closeFinal}
-            className="px-6 py-3 bg-gray-800 text-gray-300 rounded-full hover:bg-gray-700 border border-gray-600">
+            className="px-6 py-3 bg-gray-800 text-gray-300 rounded-full hover:bg-gray-700 border border-gray-600 transition-all">
             ↩ Play Again
           </button>
         </div>
