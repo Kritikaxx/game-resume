@@ -7,7 +7,7 @@ Built with React Three Fiber (Three.js), deployed on Vercel.
 ---
 
 ## Live Demo
-🔗 [your-vercel-url.vercel.app](#) ← update this after deployment
+🔗 [your-vercel-url.vercel.app](https://game-resume-virid.vercel.app/)
 
 ---
 
