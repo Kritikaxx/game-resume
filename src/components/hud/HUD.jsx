@@ -1,9 +1,9 @@
 import { useGameStore, ZONES } from '../../store/useGameStore';
 
-const ICONS = { intro:'👤', skills:'⭐', projects:'🚀', education:'🎓', achievements:'🏆', contact:'📬' };
+const ICONS = { intro:'👤', skills:'⭐', projects:'🚀', education:'🎓', experience:'💼', achievements:'🏆', contact:'📬' };
 const GAME_LABEL = {
-  intro: '🌌 Space Quiz', skills: '⭐ Memory Match', projects: '🚀 Tic Tac Toe',
-  education: '🪨 Rock Paper Scissors', achievements: '🔤 Word Scramble', contact: '🌌 Space Quiz',
+  intro: 'Space Quiz', skills: 'Memory Match', projects: 'Tic Tac Toe',
+  education: 'Rock Paper Scissors', experience: 'Speed Typing', achievements: 'Word Scramble', contact: 'Space Quiz',
 };
 
 export default function HUD() {
@@ -13,7 +13,7 @@ export default function HUD() {
 
   const GAME_KEY = {
     intro: 'quiz_intro', skills: 'memory', projects: 'tictactoe',
-    education: 'rps', achievements: 'scramble', contact: 'quiz_contact',
+    education: 'rps', experience: 'typing', achievements: 'scramble', contact: 'quiz_contact',
   };
 
   return (

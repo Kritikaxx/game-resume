@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export const ZONES = ['intro', 'skills', 'projects', 'education', 'achievements', 'contact'];
+export const ZONES = ['intro', 'skills', 'projects', 'education', 'experience', 'achievements', 'contact'];
 
 export const useGameStore = create((set, get) => ({
   gameStarted: false,

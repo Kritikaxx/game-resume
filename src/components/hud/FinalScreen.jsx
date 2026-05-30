@@ -14,7 +14,7 @@ const STARS = Array.from({ length: 20 }, () => ({
 
 const GAME_NAMES = {
   intro: 'Space Quiz', skills: 'Memory Match', projects: 'Tic Tac Toe',
-  education: 'Rock Paper Scissors', achievements: 'Word Scramble', contact: 'Space Quiz',
+  education: 'Rock Paper Scissors', experience: 'Speed Typing', achievements: 'Word Scramble', contact: 'Space Quiz',
 };
 
 export default function FinalScreen() {

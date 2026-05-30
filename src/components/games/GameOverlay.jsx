@@ -4,6 +4,8 @@ import MemoryGame   from './MemoryGame';
 import TicTacToe    from './TicTacToe';
 import RPSGame      from './RPSGame';
 import ScrambleGame from './ScrambleGame';
+import TypingGame   from './TypingGame';
+
 
 export default function GameOverlay() {
   const activeGame = useGameStore(s => s.activeGame);
@@ -13,6 +15,7 @@ export default function GameOverlay() {
     memory:       <MemoryGame             />,
     tictactoe:    <TicTacToe             />,
     rps:          <RPSGame              />,
+    typing:       <TypingGame           />,
     scramble:     <ScrambleGame         />,
     quiz_contact: <QuizGame zone="contact" />,
   };

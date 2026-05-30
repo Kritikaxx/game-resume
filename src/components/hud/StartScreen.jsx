@@ -57,7 +57,7 @@ export default function StartScreen() {
       <div className="bg-white/5 border border-white/10 backdrop-blur-sm rounded-2xl px-8 py-5 mb-8 max-w-sm w-full mx-4 text-center">
         <p className="text-cyan-400 font-bold text-sm uppercase tracking-widest mb-4">How to Play</p>
         <div className="space-y-2 text-sm text-gray-300">
-          <p>🌌 Navigate through <span className="text-white font-semibold">6 space zones</span></p>
+          <p>🌌 Navigate through <span className="text-white font-semibold">7 space zones</span></p>
           <p>🖱️ <span className="text-white font-semibold">Drag</span> to look around each zone</p>
           <p>🔍 <span className="text-white font-semibold">Click objects</span> to reveal resume info</p>
           <p>🎮 <span className="text-white font-semibold">Beat the mini-game</span> to unlock the next zone</p>

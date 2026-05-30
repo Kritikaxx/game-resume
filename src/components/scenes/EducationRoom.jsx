@@ -9,7 +9,7 @@ export default function EducationRoom({ position }) {
     label:    'University',
     title:    'University Education',
     subtitle: 'KIIT, Bhubaneswar',
-    content:  'Degree:  B.Tech — Information Technology\nDuration:  2022 – 2026\nCGPA:  8.76',
+    content:  'Degree:  B.Tech-Information Technology\nDuration:  2022-2026\nCGPA:  8.76',
     color:    '#1a1a5a',
     emissive: '#2222AA',
   },

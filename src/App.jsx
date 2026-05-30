@@ -12,6 +12,7 @@ import IntroRoom from './components/scenes/IntroRoom';
 import SkillsRoom from './components/scenes/SkillsRoom';
 import ProjectsRoom from './components/scenes/ProjectsRoom';
 import EducationRoom from './components/scenes/EducationRoom';
+import ExperienceRoom from './components/scenes/ExperienceRoom';
 import AchievementsRoom from './components/scenes/AchievementsRoom';
 import ContactRoom from './components/scenes/ContactRoom';
 
@@ -20,8 +21,9 @@ const ZONE_POSITIONS = {
   skills:       [14,  0, 0],
   projects:     [28,  0, 0],
   education:    [42,  0, 0],
-  achievements: [56,  0, 0],
-  contact:      [70,  0, 0],
+  experience:   [56,  0, 0],
+  achievements: [70,  0, 0],
+  contact:      [84,  0, 0],
 };
 
 function CameraRig() {
@@ -96,6 +98,7 @@ export default function App() {
           <SkillsRoom       position={ZONE_POSITIONS.skills} />
           <ProjectsRoom     position={ZONE_POSITIONS.projects} />
           <EducationRoom    position={ZONE_POSITIONS.education} />
+          <ExperienceRoom   position={ZONE_POSITIONS.experience} />
           <AchievementsRoom position={ZONE_POSITIONS.achievements} />
           <ContactRoom      position={ZONE_POSITIONS.contact} />
         </Suspense>
