@@ -1,16 +1,93 @@
-# React + Vite
+# Resume Quest 
+### An interactive 3D resume experience — Kritika Singh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Instead of a traditional resume page, this is a space-themed 3D world where you explore my professional journey zone by zone, beat mini-games to unlock each section, and collect points along the way.
+Built with React Three Fiber (Three.js), deployed on Vercel.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
+🔗 [your-vercel-url.vercel.app](#) ← update this after deployment
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## How It Works
 
-## Expanding the ESLint configuration
+You land on a space station. Each section of my resume — Skills, Projects, Education, Experience, Achievements, Contact — is its own 3D zone floating in space. To move to the next zone you have to beat a mini-game. Click on the 3D objects in each zone to read the actual resume content.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Controls
+
+| Action | How |
+|---|---|
+| Look around | Click and drag the mouse |
+| Navigate zones | Click the zone buttons at the top |
+| Read resume info | Click any glowing 3D object |
+| Unlock next zone | Hit the game button and win |
+
+---
+
+## Resume Sections
+
+| Zone | What's Inside |
+|---|---|
+| Intro | Who I am |
+| Skills | Tech stack with proficiency levels |
+| Projects | UniDoc, Vision Assistant, Weather Dashboard |
+| Education | KIIT + Loyola School |
+| Experience | Tata Steel, Ascendons, Deloitte |
+| Achievements | Enactus, Flipkart GRID, HULT Prize |
+| Contact | Email, GitHub, LinkedIn |
+
+---
+
+## Mini-Games (one per zone)
+
+- **Intro** — Space Quiz
+- **Skills** — Memory Card Match
+- **Projects** — Tic Tac Toe vs Computer
+- **Education** — Rock Paper Scissors
+- **Experience** — Speed Typing with WPM score
+- **Achievements** — Word Scramble
+- **Contact** — Space Quiz
+
+Each game gives points. Your final score is graded S / A / B / C on the results screen.
+
+---
+
+## Tech Stack
+
+- **React + Vite** — project foundation
+- **React Three Fiber** — Three.js in React
+- **@react-three/drei** — 3D helpers (Text, shapes, Stars, Environment)
+- **Zustand** — game state management
+- **Tailwind CSS** — all UI styling
+
+---
+
+## Run Locally
+
+```bash
+git clone https://github.com/Kritikaxx/game-resume
+cd game-resume
+npm install
+npm run dev
+```
+Opens at `http://localhost:5173`
+
+---
+
+## Project Structure
+src/
+├── components/
+│   ├── scenes/       # 7 x 3D zone rooms
+│   ├── games/        # 7 x mini-games
+│   └── hud/          # UI overlays
+├── store/            # Zustand game state
+└── data/             # Resume content
+
+---
+
+*Submitted as part of the Interactive 3D Resume individual assignment.*
+*Kritika Singh · kritika2311singh@gmail.com*
