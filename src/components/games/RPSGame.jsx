@@ -1,7 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { useGameStore } from '../../store/useGameStore';
 
-const CHOICES = ['🪨', '📄', '✂️'];
+const CHOICES = ['🗿', '📄', '✂️'];
 const NAMES   = ['Rock', 'Paper', 'Scissors'];
 const ROUNDS  = 5;
 
@@ -50,12 +50,12 @@ export default function RPSGame() {
     <div className="bg-gray-900 border border-yellow-500 rounded-2xl p-8 text-white text-center">
       <div className="text-5xl mb-3">{scores.player >= 3 ? '🏆' : '💫'}</div>
       <h2 className="text-2xl font-bold text-yellow-400 mb-2">
-        {scores.player > scores.ai ? 'You Win!' : scores.player === scores.ai ? 'Tied!' : 'AI Wins!'}
+        {scores.player > scores.ai ? 'You Win!' : scores.player === scores.ai ? 'Tied!' : 'Computer Wins!'}
       </h2>
       <p className="text-gray-300 mb-1">
         You <span className="text-green-400 font-bold">{scores.player}</span>
         {' – '}
-        <span className="text-red-400 font-bold">{scores.ai}</span> AI
+        <span className="text-red-400 font-bold">{scores.ai}</span> Computer
       </p>
       <p className="text-yellow-300 font-bold text-xl mb-6">+{getPoints(scores.player)} pts</p>
       <button
@@ -70,13 +70,13 @@ export default function RPSGame() {
   return (
     <div className="bg-gray-900 border border-yellow-500 rounded-2xl p-6 text-white">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-yellow-400 font-bold text-sm uppercase tracking-widest">🪨 Rock Paper Scissors</span>
+        <span className="text-yellow-400 font-bold text-sm uppercase tracking-widest"> Rock Paper Scissors</span>
         <span className="text-gray-400 text-sm">Round {round}/{ROUNDS}</span>
       </div>
       <p className="text-gray-400 text-xs mb-2 text-center">
         You <span className="text-green-400 font-bold">{scores.player}</span>
         {' – '}
-        <span className="text-red-400 font-bold">{scores.ai}</span> AI
+        <span className="text-red-400 font-bold">{scores.ai}</span> Computer
       </p>
 
       {last && (

@@ -6,11 +6,11 @@ export const resumeData = {
   },
 
   skills: [
-    { name: "React",       level: 90, color: "#61DAFB" },
-    { name: "Java & JavaScript",      level: 85, color: "#FFD700" },
-    { name: "C++",        level: 80, color: "#FF6B35" },
-    { name: "TypeScript",  level: 78, color: "#3178C6" },
-    { name: "Python & SQL",         level: 75, color: "#00599C" },
+    { name: "React",       level: 75, color: "#61DAFB" , usedIn: "UniDoc, Weather Dashboard, Ascendons Internship",},
+    { name: "Java & JavaScript",      level: 85, color: "#FFD700",  usedIn: "Bank Management System, Ascendons Internship, UniDoc & Weather Dashboard", },
+    { name: "C++",        level: 80, color: "#FF6B35" , usedIn: "Data Structures & Algorithms, Competitive Programming",},
+    { name: "TypeScript",  level: 70, color: "#3178C6" , usedIn: "UniDoc, Ascendons Internship",},
+    { name: "Python & SQL",         level: 75, color: "#00599C" , usedIn: "Vision Assistant (YOLOv8)",},
   ],
 
   projects: [
@@ -36,15 +36,15 @@ export const resumeData = {
 
   education: [
     {
-      degree: "B.Tech — Information Technology",
+      degree: "B.Tech-Information Technology",
       school: "KIIT, Bhubaneswar",
-      year: "2022 – 2026",
+      year: "2022-2026",
       grade: "CGPA: 8.76",
     },
     {
       degree: "Class 12 (PCM)",
       school: "Loyola School, Jamshedpur",
-      year: "2020 – 2022",
+      year: "2020-2022",
       grade: "75.5%",
     },
     {
@@ -56,9 +56,9 @@ export const resumeData = {
   ],
 
   achievements: [
-    { title: "Enactus India Nationals",  org: "1st Place — Project Vistaar 2024",       icon: "🥇" },
+    { title: "Enactus India Nationals",  org: "1st Place- Project Vistaar 2024",       icon: "🥇" },
     { title: "Flipkart GRID 7.0",        org: "National Semi-Finalist",                  icon: "🏆" },
-    { title: "HULT Prize 2024",          org: "3rd Place — Project Encube",              icon: "🥉" },
+    { title: "HULT Prize 2024",          org: "3rd Place- Project Encube",              icon: "🥉" },
   ],
 
   contact: {

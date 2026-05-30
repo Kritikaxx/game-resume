@@ -33,7 +33,9 @@ function SkillBadge({ skill, index, total }) {
     setActiveCard({
       title:    skill.name,
       subtitle: `Proficiency: ${skill.level}%`,
-      content:  collected ? 'Already collected!' : '+50 points collected!',
+      content: collected
+    ? `Already collected!\n\nUsed in: ${skill.usedIn}`
+    : `+50 points collected!\n\nUsed in: ${skill.usedIn}`,
       tags:     [skill.name],
     });
   };

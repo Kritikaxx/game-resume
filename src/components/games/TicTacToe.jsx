@@ -74,10 +74,10 @@ export default function TicTacToe() {
   return (
     <div className="bg-gray-900 border border-purple-500 rounded-2xl p-6 text-white">
       <div className="flex justify-between items-center mb-2">
-        <span className="text-purple-400 font-bold text-sm uppercase tracking-widest">🚀 Tic Tac Toe</span>
+        <span className="text-purple-400 font-bold text-sm uppercase tracking-widest">Tic Tac Toe</span>
         <span className="text-gray-400 text-sm">Round {round}/{ROUNDS} · Wins: {wins}</span>
       </div>
-      <p className="text-gray-400 text-xs mb-4 text-center">You are 🚀 · Beat the AI 👾</p>
+      <p className="text-gray-400 text-xs mb-4 text-center">You are 🚀 · Beat the Comp 👾</p>
 
       <div className="grid grid-cols-3 gap-2 mb-4">
         {board.map((v,i) => (
@@ -94,14 +94,14 @@ export default function TicTacToe() {
       {result && (
         <div className="text-center">
           <p className="text-xl font-bold mb-3">
-            {result==='X' ? '🎉 You Win!' : result==='draw' ? '🤝 Draw!' : '😅 AI Wins!'}
+            {result==='X' ? '🎉 You Win!' : result==='draw' ? 'Draw!' : 'Comp Wins!'}
           </p>
           {round < ROUNDS
             ? <button onClick={nextRound} className="px-6 py-2 bg-purple-600 hover:bg-purple-500 rounded-full font-bold">
                 Next Round →
               </button>
             : <button onClick={finish} className="px-6 py-2 bg-green-600 hover:bg-green-500 rounded-full font-bold">
-                ✅ Finish ({wins >= 2 ? '+300' : wins===1 ? '+150' : '+50'} pts) →
+                Finish ({wins >= 2 ? '+300' : wins===1 ? '+150' : '+50'} pts) →
               </button>
           }
         </div>
